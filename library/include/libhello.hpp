@@ -2,6 +2,6 @@
 
 #include <string>
 
-namespace library {
+namespace LibHello {
 std::string hello();
 }

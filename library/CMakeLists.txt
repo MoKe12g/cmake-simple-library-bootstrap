@@ -1,24 +1,24 @@
 cmake_minimum_required(VERSION 3.0)
-project(HelloLibrary)
+project(LibraryHello)
 
-add_library(hello SHARED src/hello.cpp)
+add_library(libHello SHARED src/libhello.cpp include/libhello.hpp)
 target_include_directories(
-  hello PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+  libHello PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
                "$<INSTALL_INTERFACE:include>")
 
 install(
-  TARGETS hello
-  EXPORT HelloTargets
+  TARGETS libHello
+  EXPORT LibHelloTargets
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   RUNTIME DESTINATION bin
   INCLUDES
   DESTINATION include)
 
-install(FILES include/hello.hpp DESTINATION include)
+install(FILES include/libhello.hpp DESTINATION include)
 
 install(
-  EXPORT HelloTargets
-  FILE HelloConfig.cmake
-  NAMESPACE Hello::
-  DESTINATION lib/cmake/Hello)
+  EXPORT LibHelloTargets
+  FILE LibHelloConfig.cmake
+  NAMESPACE LibHello::
+  DESTINATION lib/cmake/LibHello)
